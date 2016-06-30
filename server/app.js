@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
+
 //require model
 var User = require('../models/user');
 
@@ -13,45 +14,48 @@ var millie = require('../routes/millie');
 var userRoute = require('../routes/user_route');
 
 app.use('/millie50', millie);
-app.use('/user_route', userRoute);
-
-//connect to the database - userDb is the database name
-mongoose.connect('mongodb://localhost:27017/userDb');
+app.use('/users', userRoute);
 
 //parse json
 app.use(bodyParser.json());
 
+//connect to the database - userDb is the database name
+mongoose.connect('mongodb://localhost:27017/userDb');
+
+
+
 //dummy-value get route. Dummy value meaning
 //'hard coded' Millie
-app.get('/millie', function(req, res) {
-  var millie = new User({
-    name: 'Millie',
-    username: 'millie11',
-    password: 'reallybadpassword'
-  });
+// app.get('/millie', function(req, res) {
+//   var millie = new User({
+//     name: 'Millie',
+//     username: 'millie11',
+//     password: 'reallybadpassword'
+//   });
+//
+//   millie.save(function(err) {
+//     if(err){
+//       console.log(err);
+//       res.sendStatus(500);
+//     }else{
+//       console.log('User saved successfully!');
+//       res.sendStatus(200);
+//     }
+//   });
+// });//end millie get route
 
-  millie.save(function(err) {
-    if(err){
-      console.log(err);
-      res.sendStatus(500);
-    }else{
-      console.log('User saved successfully!');
-      res.sendStatus(200);
-    }
-  });
-});//end millie get route
-
+// refactored this code into user_route.js --- User.findOne function
 //get all users
-app.get('/all', function(req, res) {
-  User.find({}, function(err, usersList) {
-    if(err){
-      console.log(err);
-      res.sendStatus(500);
-    }else{
-      res.send(usersList);
-    }
-  });
-}); //end get all users
+// app.get('/all', function(req, res) {
+//   User.find({}, function(err, usersList) {
+//     if(err){
+//       console.log(err);
+//       res.sendStatus(500);
+//     }else{
+//       res.send(usersList);
+//     }
+//   });
+// }); //end get all users
 
 // create route
 app.post('/create', function(req, res) {
