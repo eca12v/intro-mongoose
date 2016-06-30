@@ -1,10 +1,11 @@
 {
   "name": "mongoose-lec",
   "version": "1.0.0",
-  "description": "",
+  "description": "Fork my intro mongoose repo: https://github.com/mhwalsh/intro-mongoose",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/app.js"
   },
   "keywords": [],
   "author": "",
@@ -12,6 +13,14 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "mongoose": "^4.5.1"
-  }
+    "mongoose": "^4.5.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bljohnson/intro-mongoose.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bljohnson/intro-mongoose/issues"
+  },
+  "homepage": "https://github.com/bljohnson/intro-mongoose#readme"
 }

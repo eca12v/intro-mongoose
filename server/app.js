@@ -8,6 +8,13 @@ var User = require('../models/user');
 // get the express app
 var app = express();
 
+// require routes
+var millie = require('../routes/millie');
+var userRoute = require('../routes/user_route');
+
+app.use('/millie50', millie);
+app.use('/user_route', userRoute);
+
 //connect to the database - userDb is the database name
 mongoose.connect('mongodb://localhost:27017/userDb');
 
