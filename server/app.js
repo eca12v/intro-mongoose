@@ -85,37 +85,37 @@ app.post('/create', function(req, res) {
   well as the updated user object.
 **/
 //update millie route
-app.put('/updateMillie', function(req, res) {
-  console.log('hit put route - updateMillie');
-
-  //Hard coded to find one user with name Millie
-  User.findOne({name: 'Millie'}, function(err, userResult) {
-    console.log('find user result = ', userResult);
-
-    if(err){
-      console.log(err);
-      res.sendStatus(500);
-    }else{
-      userResult.name = "Millie Walsh";
-      userResult.admin = false;
-
-      userResult.save(function(err) {
-        if(err){
-          console.log(err);
-          res.sendStatus(500);
-        }else{
-          console.log('Update user = ', userResult._id);
-          res.sendStatus(200);
-          /**
-            Thought: What do you want your API to return.
-            Just a status code? The updated user object?
-            Or the userResult._id? res.send(userResult);
-          **/
-        }
-      });
-    }
-  });
-}); //end update Millie route
+// app.put('/updateMillie', function(req, res) {
+//   console.log('hit put route - updateMillie');
+//
+//   //Hard coded to find one user with name Millie
+//   User.findOne({name: 'Millie'}, function(err, userResult) {
+//     console.log('find user result = ', userResult);
+//
+//     if(err){
+//       console.log(err);
+//       res.sendStatus(500);
+//     }else{
+//       userResult.name = "Millie Walsh";
+//       userResult.admin = false;
+//
+//       userResult.save(function(err) {
+//         if(err){
+//           console.log(err);
+//           res.sendStatus(500);
+//         }else{
+//           console.log('Update user = ', userResult._id);
+//           res.sendStatus(200);
+//           /**
+//             Thought: What do you want your API to return.
+//             Just a status code? The updated user object?
+//             Or the userResult._id? res.send(userResult);
+//           **/
+//         }
+//       });
+//     }
+//   });
+// }); //end update Millie route
 
 /**
   Thought: How could you make this route delete any user?
@@ -123,19 +123,19 @@ app.put('/updateMillie', function(req, res) {
   This should be passed in the URL. For ex: localhost:3000/delete/<id>
 **/
 // delete Millie route
-app.delete('/deleteMillie', function(req, res) {
-  console.log('delete route');
-
-  User.findOne({username: 'millie11'}, function(err, userResult) {
-    if(err){
-      console.log(err);
-      res.sendStatus(500);
-    }else{
-      User.remove({_id: userResult._id}, function(err) {});
-      res.sendStatus(200);
-    }
-  });
-});// end delete route
+// app.delete('/deleteMillie', function(req, res) {
+//   console.log('delete route');
+//
+//   User.findOne({username: 'millie11'}, function(err, userResult) {
+//     if(err){
+//       console.log(err);
+//       res.sendStatus(500);
+//     }else{
+//       User.remove({_id: userResult._id}, function(err) {});
+//       res.sendStatus(200);
+//     }
+//   });
+// });// end delete route
 
 // server listen
 var server = app.listen(3000, function() {
